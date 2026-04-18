@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sizzle & Stir - Smart Recipe Recommender</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🍳</span>
+                <h1>Sizzle<span>&</span>Stir</h1>
+            </div>
+            <nav>
+                <button class="nav-btn active" data-tab="recommendations">Recommendations</button>
+                <button class="nav-btn" data-tab="pantry">Pantry</button>
+                <button class="nav-btn" data-tab="favorites">Favorites</button>
+                <button class="nav-btn" data-tab="shopping">Shopping List</button>
+            </nav>
+            <div class="user-profile">
+                <span class="user-avatar">👨‍🍳</span>
+                <span id="username">Chef</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Recommendations Tab -->
+        <section id="recommendations-tab" class="tab-content active">
+            <div class="section-header">
+                <h2>Recommended for You</h2>
+                <div class="strategy-selector">
+                    <select id="strategySelect">
+                        <option value="waste">Reduce Food Waste</option>
+                        <option value="dietary">Match Dietary Profile</option>
+                    </select>
+                    <button id="refreshRecs" class="btn btn-primary">Refresh</button>
+                </div>
+            </div>
+            
+            <div class="alert-container" id="alertContainer"></div>
+            
+            <div id="recommendationsList" class="recipe-grid">
+                <div class="loading">Loading recommendations...</div>
+            </div>
+        </section>
+
+        <!-- Pantry Tab -->
+        <section id="pantry-tab" class="tab-content">
+            <div class="section-header">
+                <h2>Your Pantry</h2>
+                <button id="addPantryBtn" class="btn btn-primary">+ Add Item</button>
+            </div>
+            
+            <div class="add-pantry-form hidden" id="addPantryForm">
+                <input type="text" id="pantryName" placeholder="Ingredient name" />
+                <input type="number" id="pantryQty" placeholder="Quantity" step="0.1" />
+                <input type="text" id="pantryUnit" placeholder="Unit (g, ml, pcs)" />
+                <input type="number" id="pantryExpiry" placeholder="Days until expiry" />
+                <button id="savePantryItem" class="btn btn-success">Save</button>
+                <button id="cancelPantryItem" class="btn btn-secondary">Cancel</button>
+            </div>
+            
+            <div class="expiring-alert" id="expiringAlert"></div>
+            
+            <div id="pantryList" class="pantry-grid">
+                <div class="loading">Loading pantry items...</div>
+            </div>
+        </section>
+
+        <!-- Favorites Tab -->
+        <section id="favorites-tab" class="tab-content">
+            <div class="section-header">
+                <h2>Favorite Recipes</h2>
+            </div>
+            <div id="favoritesList" class="recipe-grid">
+                <div class="loading">Loading favorites...</div>
+            </div>
+        </section>
+
+        <!-- Shopping List Tab -->
+        <section id="shopping-tab" class="tab-content">
+            <div class="section-header">
+                <h2>Shopping List</h2>
+                <button id="generateShoppingList" class="btn btn-primary">Generate from Recommendations</button>
+            </div>
+            <div id="shoppingList" class="shopping-list">
+                <div class="loading">Generate a shopping list...</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Recipe Detail Modal -->
+    <div id="recipeModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sizzle & Stir // Smart Recipe Recommender</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
